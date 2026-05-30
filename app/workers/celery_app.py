@@ -5,6 +5,7 @@ celery = Celery(
     "async_report",
     broker=settings.redis_url,
     backend=settings.redis_url,
+    include=["app.workers.tasks"],
 )
 
 celery.conf.update(
