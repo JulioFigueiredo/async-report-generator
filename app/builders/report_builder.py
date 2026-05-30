@@ -98,3 +98,5 @@ def build_report(report_type: str, region: str, month: str, output_path: str) ->
         _build_inventory(month_number, output_path)
     elif report_type == "customers":
         _build_customers(region, output_path)
+    else:
+        raise ValueError(f"Unknown report_type: {report_type!r}")

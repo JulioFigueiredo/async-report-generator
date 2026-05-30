@@ -31,6 +31,14 @@ async def test_post_report_invalid_region_returns_422(client):
     assert response.status_code == 422
 
 
+async def test_post_report_invalid_month_returns_422(client):
+    response = await client.post(
+        "/api/v1/reports",
+        json={"type": "sales", "region": "southeast", "month": "invalid"},
+    )
+    assert response.status_code == 422
+
+
 @patch("app.services.report_service.celery")
 async def test_get_status_returns_200(mock_celery, client):
     mock_result = MagicMock()
